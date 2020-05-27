@@ -59,7 +59,8 @@
                 <div id="enscart_myimage_wrapper">
                     <a href="/cart-show"><img src="{{ asset('images/cart.png') }}"> </a>
                 </div>
-                <div id="enscart_my_counter_wrapper"><span  id="easynetshop-cart-count">{{App\Bucket::distinct('id')->count('id')}}</span></div>
+                <p hidden="true">{{$ip = $_SERVER['REMOTE_ADDR']}}</p>
+                <div id="enscart_my_counter_wrapper"><span  id="easynetshop-cart-count">{{App\Bucket::where('user_ip', 'like', "%$ip%")->distinct('id')->count('id')}}</span></div>
             </div>
         </div>
     </div>
